@@ -1,0 +1,6 @@
+Little class I made to show my parents why it's important to have long and complex passwords.
+
+Of course it doesn't represent the reality, but my goal was to make them understand that today, computers are way powerful enouth to try a lot of possibilities in a very short time.
+
+If you want to try this, begin with a short password (5 characters or less) and then you can increase the size if you want.
+Above 7 characters, the program will need a long time to find it.
