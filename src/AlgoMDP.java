@@ -95,10 +95,12 @@ public class AlgoMDP {
 
         // checks if the list has to be reseted
         boolean reset = true;
-        for (int n = 0; n < list.length && reset ; n++ ) {
+        int n = 0;
+        while ( n < list.length && reset ) {
             if ( list[n] < max-1 ) {
                 reset = false;
             }
+            n++;
         }
 
         // if it does, we reset the list
