@@ -1,22 +1,55 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * Little class that asks the user to enter a password, and then checks all the possibilities to find it.
+ * When the password is found, the program prints it, but also the number of tries and the time needed.
+ *
+ * @author dowymn
+ */
 public class AlgoMDP {
 
+
+    //-----[ ATTRIBUTES
+
+    /**
+     * The tab that contains the possible characters.
+     * They are not all in, but there are the most used ones.
+     */
     private final char[] alpha = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
-            '0','1','2','3','4','5','6','7','8','9','!','?','.',',',';',':','/','\\',
-            'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
-    private int[] list;
+            'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+            '0','1','2','3','4','5','6','7','8','9','!','?','.',',',';',':','/','\\'};
+    /**
+     * The lenght of the alpha list.
+     * Is only used to avoid writing "alpha.length" each time.
+     */
     private final int max = alpha.length;
 
+    /**
+     * The list that will be used to know which character has to be tried.
+     */
+    private int[] list;
+
+    /**
+     * The password chosen by the user.
+     */
     private final String mdp;
+    /**
+     * The password found by the program.
+     */
     private String foundMdp;
 
+    /**
+     * The number of tries the program needed to find the password.
+     */
     private int nbTries;
+
+
+    //-----[ MAIN METHOD
 
     /**
      * Asks the user for a password and then searches it until it is found.
-     * Then, prints the passwordn the number of tries needed to find it and the duration.
+     * Then, calls the method to prints the password, the number of tries and the duration the program needed to find it.
      */
     private AlgoMDP() {
 
@@ -40,6 +73,9 @@ public class AlgoMDP {
         finish((t2-t1)/1000);
     }
 
+
+    //-----[ OTHER METHODS
+
     /**
      * Builds the new line to compare with the password.
      * @return the line
@@ -50,33 +86,6 @@ public class AlgoMDP {
             line.append(alpha[j]);
         }
         return line.toString();
-    }
-
-    /**
-     * Modifies the list as necessary.
-     */
-    private void modifyList() {
-
-        if ( list[list.length-1] < max ) {
-            list[list.length-1] = list[list.length-1] + 1;
-
-        } else { // we check
-            list[list.length-1] = 0;
-
-            boolean found = false;
-            int k = 0;
-
-            while ( !found && k >= 0 ) {
-                if ( list[k] < max ) {
-                    list[k] = list[k]+1;
-                    found = true;
-                } else {
-                    list[k] = 0;
-                }
-                k--;
-            }
-        }
-
     }
 
     /**
@@ -130,16 +139,6 @@ public class AlgoMDP {
     }
 
     /**
-     * Allows to print the content of an array.
-     */
-    private void printList() {
-        for (int j : list) {
-            System.out.print(j + " - ");
-        }
-        System.out.println();
-    }
-
-    /**
      * Prints the end of the program.
      * @param time the time the program needed to find the password
      */
@@ -151,7 +150,9 @@ public class AlgoMDP {
         System.out.println("-------------------------------------------------\n");
     }
 
-    // The main method
+
+    //-----[ LAUNCHER
+
     public static void main(String[] args) {
         new AlgoMDP();
     }
